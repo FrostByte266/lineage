@@ -1,0 +1,33 @@
+version: '3'
+services:
+  vue_frontend:
+    depends_on: [flask_backend]
+    build: frontend/
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app:cached
+  flask_backend:
+    depends_on: [database, revoked_token_store]
+    build: backend/
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app:cached
+  database:
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=flask
+      - POSTGRES_PASSWORD=2b^XT8#iTO9d
+      - POSTGRES_DB=lineage
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+  revoked_token_store:
+    image: "redis:latest"
+    ports: 
+      - "6379:6379"
+
+volumes:
+  database-data:
