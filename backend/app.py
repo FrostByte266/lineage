@@ -4,10 +4,10 @@ import yaml
 from flask import Flask
 from flask_migrate import Migrate
 
-from .models import User
 from .api import api_blueprint
-from .shared import db, redis, jwt
+from .models import User
 from .schemas import ma
+from .shared import db, jwt, redis
 
 # Load generic config options
 with open('base_config.yaml') as f:
