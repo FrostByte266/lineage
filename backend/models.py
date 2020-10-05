@@ -1,8 +1,5 @@
 from flask_jwt_extended import create_access_token
-from flask_redis import FlaskRedis
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import IntegrityError
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from .shared import db, redis, jwt
 
@@ -43,6 +40,20 @@ class User(db.Model):
 
     @classmethod
     def authenticate(cls, username, password):
+        """Authenticates details of a user
+
+        Parameters
+        ----------
+        username : str
+            The username of the user to authenticate
+        password : str
+            The password to authenticate with
+
+        Returns
+        -------
+        User
+            The authenticated user
+        """
         if any(i is None for i in (username, password)):
             return dict(error='missing fields'), 400
 
