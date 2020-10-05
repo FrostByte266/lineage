@@ -275,5 +275,4 @@ $RECYCLE.BIN/
 migrations/alembic.ini
 
 # App keyfiles
-jwt_secret_key.txt
-secret_key.txt
+secret_config.yaml
