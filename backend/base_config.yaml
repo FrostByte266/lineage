@@ -3,3 +3,5 @@ JWT_BLACKLIST_TOKEN_CHECKS:
 - access
 SQLALCHEMY_TRACK_MODIFICATIONS: 'False'
 REDIS_URL: redis://revoked_token_store:6379/0
+JWT_ACCESS_TOKEN_EXPIRES: !!python/object/new:datetime.timedelta
+    kwds: {minutes: 15}
