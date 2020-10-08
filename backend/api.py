@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import create_access_token, get_raw_jwt, current_user, jwt_required
+from flask_jwt_extended import create_access_token, get_raw_jwt, current_user, jwt_required, jwt_optional
 from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
 
@@ -14,14 +14,19 @@ api = Api(api_blueprint)
 
 def revoke_token(token):
     token_expires_at = datetime.fromtimestamp(token['exp'])
-    time_to_expire = datetime.utcnow() - token_expires_at
+    time_to_expire = token_expires_at - datetime.utcnow()
     redis.set(token['jti'], 1, time_to_expire)
 
 class Login(Resource):
     method_decorators = {
         'put': [jwt_required],
-        'delete': [jwt_required]
+        'delete': [jwt_required],
+        'get': [jwt_optional]
     }
+
+    @staticmethod
+    def get():
+        return 201 if current_user is not None else 401
 
     @staticmethod
     def post():
