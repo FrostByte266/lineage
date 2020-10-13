@@ -7,7 +7,8 @@
         <v-btn to="/sanity">Sanity</v-btn>
       </v-toolbar-items>
       <v-toolbar-items v-if="$store.getters.isLoggedIn">
-        <v-btn  @click="$store.dispatch('logout')">Logout</v-btn>
+        <v-btn to="/timelines">My Timelines</v-btn>
+        <v-btn @click="$store.dispatch('logout')">Logout</v-btn>
       </v-toolbar-items>
       <v-toolbar-items v-else>
         <v-btn to='/register'>Sign Up</v-btn>

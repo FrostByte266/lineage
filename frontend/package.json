@@ -14,7 +14,8 @@
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0",
-    "@smartweb/vue-flash-message": "^0.6.5"
+    "@smartweb/vue-flash-message": "^0.6.5",
+    "@fortawesome/fontawesome-free": "^5.14.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

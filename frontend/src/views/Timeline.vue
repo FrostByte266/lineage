@@ -1,5 +1,8 @@
 <template>
-    <h1>{{ title }}</h1>
+    <div>
+        <v-icon class="hover" @click="$router.go(-1)">fa-arrow-left</v-icon>
+        <h1>{{ title }}</h1>
+    </div>
 </template>
 
 <script>
@@ -27,3 +30,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    div >>> .hover:hover {
+        transform: translate(-10px, 0px);
+    }
+</style>
