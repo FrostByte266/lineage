@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
 from flask_jwt_extended import create_access_token, get_raw_jwt, current_user, jwt_required, jwt_optional
 from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
@@ -26,7 +26,7 @@ class Login(Resource):
 
     @staticmethod
     def get():
-        return 201 if current_user is not None else 401
+        return Response(status=204 if current_user else 401)
 
     @staticmethod
     def post():
@@ -67,7 +67,7 @@ class TimelineResource(Resource):
             return timelines_schema.dump(timelines)
 
     @staticmethod
-    def post(timeline_id):
+    def post(timeline_id=None):
         if timeline_id is None:
             user = current_user
             params = request.json
