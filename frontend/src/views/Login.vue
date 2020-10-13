@@ -31,7 +31,14 @@ export default {
                     password: this.password
                 }
                 this.$store.dispatch('login', data)
-                .then(() => this.$router.push('/'))
+                .then(() => {
+                    const next_href = this.$route.query.next
+                    if(typeof next_href === 'undefined') {
+                        this.$router.push('/')
+                    } else {
+                        this.$router.push(next_href)
+                    }
+                })
                 .catch(error => {
                     this.flashMessage.error({
                         title: 'Invaid credentials',

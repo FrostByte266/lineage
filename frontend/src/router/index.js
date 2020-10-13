@@ -32,6 +32,22 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import('../views/Register')
+  },
+  {
+    path: '/timelines',
+    name: 'Timelines',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import('../views/Timelines')
+  },
+  {
+    path: '/timeline/:id',
+    name: 'Timeline',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import('../views/Timeline')
   }
 ]
 
@@ -42,11 +58,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const url = router.resolve({name: 'Login', query: {next: to.path}})
   if(to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) {
+    if (router.app.$store.getters.isLoggedIn) {
       next()
     } else {
-      next('/login')
+      next(url)
     }
   } else {
     next()
