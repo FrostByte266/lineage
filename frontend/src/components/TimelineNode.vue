@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <h1>{{ title }}</h1>
-        <p> {{ content }}</p>
-        <img v-if="typeof attachment !== 'undefined'" src="{{ attachment }}">
-    </div>
+    <v-timeline-item>
+        <v-card>
+            <v-card-title>{{ title }}</v-card-title>
+            <v-card-text>{{ content }}</v-card-text>
+            <v-img v-if="attachment !== null" :src="attachment" />
+        </v-card>
+    </v-timeline-item>
 </template>
 
 <script>
@@ -13,6 +15,9 @@ export default {
         title: String,
         content: String,
         attachment: String
+    },
+    created() {
+        alert(this.attachment !== null)
     }
 }
 </script>

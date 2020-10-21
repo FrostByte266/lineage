@@ -9,7 +9,7 @@ class TimelineNode(db.Model):
     position = db.Column(db.Integer)
     title = db.Column(db.String(32))
     content = db.Column(db.Text)
-    attachment = db.Column(db.String(32))
+    attachment = db.Column(db.String(512))
 
     def __init__(self, timeline, title, content, attachment):
         self.timeline = timeline

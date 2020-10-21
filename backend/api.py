@@ -134,11 +134,12 @@ class TimelineNodeResource(Resource):
         params = request.json
         allowed_fields = ('title', 'content', 'attachment')
         filtered = {key: params[key] for key in allowed_fields if key in params}
-        node = TimelineNode.query.filter_by(timeline=timeline, position=node_id)
+        node = TimelineNode.query.filter_by(timeline=timeline, position=node_id).first()
         if node is None:
             return dict(error='Node ID invalid'), 404
         for property, new_value in filtered.items():
             setattr(node, property, new_value)
+        db.session.commit()
         return timeline_node_schema.dump(node)
 
 api.add_resource(TimelineNodeResource, '/timeline/<int:timeline_id>/nodes', '/timeline/<int:timeline_id>/node/<int:node_id>')
