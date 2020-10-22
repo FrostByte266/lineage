@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import store from '../store/index'
+
+import Home from '../views/Home'
+import Login from '../views/Login'
+import Register from '../views/Register'
+import Timelines from '../views/Timelines'
+import Timeline from '../views/Timeline'
 
 Vue.use(VueRouter)
 
@@ -12,27 +17,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/sanity',
-    name: 'Sanity',
-    component: () => import('../views/Sanity.vue')
-  },
-  {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login')
+    component: Login
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../views/Register')
+    component: Register
   },
   {
     path: '/timelines',
@@ -40,7 +32,7 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    component: () => import('../views/Timelines')
+    component: Timelines
   },
   {
     path: '/timeline/:id',
@@ -48,7 +40,7 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    component: () => import('../views/Timeline')
+    component: () => Timeline
   }
 ]
 

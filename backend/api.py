@@ -144,10 +144,6 @@ class TimelineNodeResource(Resource):
 
 api.add_resource(TimelineNodeResource, '/timeline/<int:timeline_id>/nodes', '/timeline/<int:timeline_id>/node/<int:node_id>')
 
-@api_blueprint.route('/sanity')
-def index():
-    return jsonify('You\'re sane my guy!')
-
 @api_blueprint.route('/register', methods=['POST'])
 def register():
     request_json = request.get_json()
