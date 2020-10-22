@@ -1,13 +1,16 @@
+import os
 from datetime import timedelta
 
 import yaml
 from flask import Flask
 from flask_migrate import Migrate
 
-from .api import api_blueprint
-from .models import User
-from .schemas import ma
-from .shared import db, jwt, redis
+from api import api_blueprint
+from models import User
+from schemas import ma
+from shared import db, jwt, redis
+
+os.chdir('/app')
 
 # Load generic config options
 with open('base_config.yaml') as f:

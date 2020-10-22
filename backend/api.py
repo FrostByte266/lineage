@@ -5,9 +5,9 @@ from flask_jwt_extended import create_access_token, get_raw_jwt, current_user, j
 from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
 
-from .models import User, Timeline, TimelineNode
-from .schemas import timeline_node_schema, timeline_nodes_schema, timeline_schema, timelines_schema
-from .shared import db, redis
+from models import User, Timeline, TimelineNode
+from schemas import timeline_node_schema, timeline_nodes_schema, timeline_schema, timelines_schema
+from shared import db, redis
 
 api_blueprint = Blueprint('api', __name__)
 api = Api(api_blueprint)

@@ -1,7 +1,7 @@
 from flask_jwt_extended import create_access_token
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from .shared import db, redis, jwt
+from shared import db, redis, jwt
 
 class TimelineNode(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
