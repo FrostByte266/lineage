@@ -1,15 +1,16 @@
 FROM node:latest
 
-WORKDIR /app
-COPY package*.json ./
-
 ENV CHOKIDAR_USEPOLLING=true
 
-RUN npm install
+WORKDIR /app
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn install
 
 COPY . .
 
 EXPOSE 8080
 
 
-CMD ["npm", "run", "serve"]
+CMD ["yarn", "run", "serve"]

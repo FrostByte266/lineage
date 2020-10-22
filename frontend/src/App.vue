@@ -3,9 +3,6 @@
     <v-app-bar app>
       <v-toolbar-title @click="$router.push('/')">Lineage</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn to="/sanity">Sanity</v-btn>
-      </v-toolbar-items>
       <v-toolbar-items v-if="$store.getters.isLoggedIn">
         <v-btn to="/timelines">My Timelines</v-btn>
         <v-btn @click="$store.dispatch('logout')">Logout</v-btn>
