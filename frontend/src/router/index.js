@@ -40,7 +40,7 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    component: () => Timeline
+    component: Timeline
   }
 ]
 
