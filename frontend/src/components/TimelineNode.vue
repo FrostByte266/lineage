@@ -15,9 +15,6 @@ export default {
         title: String,
         content: String,
         attachment: String
-    },
-    created() {
-        alert(this.attachment !== null)
     }
 }
 </script>
