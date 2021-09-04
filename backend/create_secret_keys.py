@@ -8,7 +8,7 @@ jwt_secret_key = b64encode(os.urandom(128)).decode('utf-8')
 
 try:
     with open('secret_config.yaml') as f:
-        parsed_config = yaml.load(f, yaml.BaseLoader)
+        parsed_config = yaml.safe_load(f, yaml.BaseLoader)
 except FileNotFoundError:
     parsed_config = dict()
 
