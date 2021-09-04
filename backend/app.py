@@ -14,11 +14,11 @@ os.chdir('/app')
 
 # Load generic config options
 with open('base_config.yaml') as f:
-    basic_conf = yaml.load(f, yaml.Loader)
+    basic_conf = yaml.safe_load(f, yaml.Loader)
 
 # Load secret keys
 with open('secret_config.yaml') as f:
-    secret_conf = yaml.load(f, yaml.Loader)
+    secret_conf = yaml.safe_load(f, yaml.Loader)
 
 # Create Flask app and set config values
 app = Flask(__name__)
