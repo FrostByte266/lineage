@@ -5,6 +5,8 @@
 * Vue.js
 * Redis
 * Nginx
+* JWT Auth
+* Frontend / Backend communication
 ## Skills improved upon:
 * Python
 * Flask
